@@ -1,0 +1,25 @@
+<% include partials/header %>
+<main class="container py-5">
+  <section class="row justify-content-center">
+    <article class="col-md-5">
+      <div class="card card-body card-shadow">
+          <h4 class="mb-0">Register</h4>
+          <hr class="mb-4">
+          <form action="register" method="POST" class="">
+            <div class="form-group">
+              <label for="mail">E-mail</label>
+              <input type="email" class="form-control" name="email" placeholder="Adresse mail: exemple@gmail.com..." required>
+            </div>
+            <div class="form-group">
+              <label for="password">Mot de passe</label>
+              <input type="password" class="form-control" name="password" placeholder="••••••" required>
+            </div>
+            <input type="submit" class="btn btn-brand btn-block" value="Je m'inscris">
+          </form>
+          <hr>
+          <p class="mb-0 text-center"><a href="/login" class="">Vous possedez déjà un compte ? <br/>connectez vous ici !</a></p>
+      </div>
+    </article>
+  </section>
+</main>
+<% include partials/footer %>

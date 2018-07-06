@@ -1,0 +1,56 @@
+<% include ../partials/header %>
+<main class="container py-5">
+  <section class="row justify-content-center">
+    <article class="col-md-7">
+      <div class="card card-shadow">
+        <section class="card-header bg-gradient border-bottom-0">
+          <h4 class="text-center py-3 text-white mb-0">Toutes les tâches</h4>
+        </section>
+        <section class="card-body">
+          <ul class="list-unstyled" id="taskvalue">
+            <% tasksUser.on('child_added', function(snapshot){
+              snapshot.forEach(function(item){ %>
+                <li class="text-muted mb-3 d-flex align-items-center">
+                  <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="<%= snapshot.key %>">
+                    <label class="custom-control-label" for="<%= snapshot.key %>"><%= item.val() %></label>
+                  </div>
+                  <button name="share" class="btn btn-link ml-auto border-right text-muted">Share <i class="fas fa-share-alt"></i></button>
+                  <a href="/task/update/<%= snapshot.key %>" class="text-primary pl-3"> edit <i class="far fa-edit"></i></a>
+                  <a href="/task/delete/<%= snapshot.key %>" class="text-danger pl-3"> delete <i class="far fa-times-circle"></i></a>
+                </li>
+            <% }) }) %>
+          </ul>
+          <% if(count <= 0) { %>
+            <span class="text-muted">Veuillez rajouter une tâche</span>
+          <% } %>
+          <hr>
+          <div class="row align-items-center">
+            <div class="col">
+              <small class="text-muted text-uppercase">
+                <%= count %>
+                <% if(count <= 1) { %>
+                  Tâche
+                <% } else { %>
+                  Tâches
+                <% } %>
+                <%# Tâches %>
+              </small>
+          </div>
+            <div class="col-md-7">
+              <form action="" role="form" method="POST" id="task-form">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Nouvelle tâche" name="task" required>
+                  <div class="input-group-append">
+                    <input class="btn btn-outline-secondary" type="submit" value="Ajouter">
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+</main>
+<% include ../partials/footer %>

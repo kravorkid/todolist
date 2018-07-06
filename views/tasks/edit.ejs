@@ -1,0 +1,26 @@
+<% include ../partials/header %>
+<main class="container py-5">
+  <section class="row justify-content-center">
+    <article class="col-md-7">
+      <div class="card card-shadow">
+        <section class="card-header bg-gradient border-bottom-0">
+          <h4 class="text-center py-3 text-white mb-0">Editer une tâche</h4>
+        </section>
+        <section class="card-body">
+          <form action="" role="form" method="POST" id="task-form">
+            <div class="input-group">
+              <input type="hidden" name="id" value=<%= id %>>
+              <% tasksUser.once('value', function(snapshot){ %>
+                <input type="text" class="form-control" placeholder="Editer une tâche" name="task" value=<%= snapshot.child(id).child('task').val() %>>
+              <% }) %>
+              <div class="input-group-append">
+                <input class="btn btn-outline-secondary" type="submit" value="Modifier">
+              </div>
+            </div>
+          </form>
+        </section>
+      </div>
+    </article>
+  </section>
+</main>
+<% include ../partials/footer %>
